@@ -2,6 +2,8 @@
 name = "tetrominal"
 version = "0.1.0"
 edition = "2021"
+license = "GPL-3.0"
+description = "Terminal Port of the classic game Tetris"
 
 [dependencies]
 crossterm = "0.28.1"
