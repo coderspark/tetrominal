@@ -1,9 +1,10 @@
 [package]
 name = "tetrominal"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 license = "GPL-3.0"
 description = "Terminal Port of the classic game Tetris"
+repository = "https://github.com/coderspark/tetrominal"
 
 [dependencies]
 crossterm = "0.28.1"
