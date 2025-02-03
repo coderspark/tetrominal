@@ -270,7 +270,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tetris"
+name = "tetrominal"
 version = "0.1.0"
 dependencies = [
  "crossterm",
