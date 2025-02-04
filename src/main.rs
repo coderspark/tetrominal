@@ -43,14 +43,14 @@ const PIECEDATA: [((i32, i32), (i32, i32), (i32, i32), (i32, i32)); 28] = [
     ((0, 0), (1, -1), (-1, 0), (1, 0)),  // L-3
     ((0, 1), (0, 0), (1, 0), (1, -1)),   // Z-3
 ];
-const NPIECEDATA: [((i32, i32), (i32, i32), (i32, i32), (i32, i32)); 7] = [
-    ((-1, 0), (0, 0), (1, 0), (2, 0)), // I-0
-    ((-1, 0), (0, 0), (1, 0), (0, 1)), // T-0
-    ((-1, 1), (0, 1), (0, 0), (1, 0)), // S-0
-    ((0, 0), (1, 0), (0, 1), (1, 1)),  // O-0
-    ((1, 0), (1, -1), (0, 1), (1, 1)), // J-0
-    ((0, -1), (0, 0), (0, 1), (1, 1)), // L-0
-    ((-1, 0), (0, 0), (0, 1), (1, 1)), // Z-0
+const HPIECEDATA: [((i32, i32), (i32, i32), (i32, i32), (i32, i32)); 7] = [
+    ((-4, 0), (-2, 0), (0, 0), (2, 0)),  // I-0
+    ((-3, 0), (-1, 0), (1, 0), (-1, 1)), // T-0
+    ((-3, 1), (-1, 1), (-1, 0), (1, 0)), // S-0
+    ((-2, 0), (0, 0), (-2, 1), (0, 1)),  // O-0
+    ((0, 0), (0, -1), (-2, 1), (0, 1)),  // J-0
+    ((-2, -1), (-2, 0), (-2, 1), (0, 1)),// L-0
+    ((-3, 0), (-1, 0), (-1, 1), (1, 1)), // Z-0
 ];
 
 fn render(
@@ -162,32 +162,32 @@ fn render(
     );
 
     print!(
-        "\x1b[{};{}H\x1b[38;2;255;255;255;1m╭──┤Next├──╮\x1b[0m",
+        "\x1b[{};{}H\x1b[38;2;255;255;255;1m╭─┤Next├─╮\x1b[0m",
         tsize.1 / 2,
         tsize.0 / 2 + 20
     );
     print!(
-        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│ . . . . .│\x1b[0m",
+        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│. . . . │\x1b[0m",
         tsize.1 / 2 + 1,
         tsize.0 / 2 + 20
     );
     print!(
-        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│ . . . . .│\x1b[0m",
+        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│. . . . │\x1b[0m",
         tsize.1 / 2 + 2,
         tsize.0 / 2 + 20
     );
     print!(
-        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│ . . . . .│\x1b[0m",
+        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│. . . . │\x1b[0m",
         tsize.1 / 2 + 3,
         tsize.0 / 2 + 20
     );
     print!(
-        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│ . . . . .│\x1b[0m",
+        "\x1b[{};{}H\x1b[38;2;255;255;255;1m│. . . . │\x1b[0m",
         tsize.1 / 2 + 4,
         tsize.0 / 2 + 20
     );
     print!(
-        "\x1b[{};{}H\x1b[38;2;255;255;255;1m╰──────────╯\x1b[0m",
+        "\x1b[{};{}H\x1b[38;2;255;255;255;1m╰────────╯\x1b[0m",
         tsize.1 / 2 + 5,
         tsize.0 / 2 + 20
     );
@@ -235,52 +235,52 @@ fn render(
 
     print!(
         "\x1b[{};{}H{}██\x1b[0m",
-        tsize.1 as i32 / 2 + 2 + NPIECEDATA[next].0 .1,
-        tsize.0 as i32 / 2 + 24 + NPIECEDATA[next].0 .0 * 2,
+        tsize.1 as i32 / 2 + 2 + HPIECEDATA[next].0 .1,
+        tsize.0 as i32 / 2 + 25 + HPIECEDATA[next].0 .0,
         colours[next]
     );
     print!(
         "\x1b[{};{}H{}██\x1b[0m",
-        tsize.1 as i32 / 2 + 2 + NPIECEDATA[next].1 .1,
-        tsize.0 as i32 / 2 + 24 + NPIECEDATA[next].1 .0 * 2,
+        tsize.1 as i32 / 2 + 2 + HPIECEDATA[next].1 .1,
+        tsize.0 as i32 / 2 + 25 + HPIECEDATA[next].1 .0,
         colours[next]
     );
     print!(
         "\x1b[{};{}H{}██\x1b[0m",
-        tsize.1 as i32 / 2 + 2 + NPIECEDATA[next].2 .1,
-        tsize.0 as i32 / 2 + 24 + NPIECEDATA[next].2 .0 * 2,
+        tsize.1 as i32 / 2 + 2 + HPIECEDATA[next].2 .1,
+        tsize.0 as i32 / 2 + 25 + HPIECEDATA[next].2 .0,
         colours[next]
     );
     print!(
         "\x1b[{};{}H{}██\x1b[0m",
-        tsize.1 as i32 / 2 + 2 + NPIECEDATA[next].3 .1,
-        tsize.0 as i32 / 2 + 24 + NPIECEDATA[next].3 .0 * 2,
+        tsize.1 as i32 / 2 + 2 + HPIECEDATA[next].3 .1,
+        tsize.0 as i32 / 2 + 25 + HPIECEDATA[next].3 .0,
         colours[next]
     );
 
     if hold != 7 {
         print!(
             "\x1b[{};{}H{}██\x1b[0m",
-            tsize.1 as i32 / 2 - 5 + NPIECEDATA[hold].0 .1,
-            tsize.0 as i32 / 2 - 26 + NPIECEDATA[hold].0 .0 * 2,
+            tsize.1 as i32 / 2 - 5 + HPIECEDATA[hold].0 .1,
+            tsize.0 as i32 / 2 - 25 + HPIECEDATA[hold].0 .0,
             colours[hold]
         );
         print!(
             "\x1b[{};{}H{}██\x1b[0m",
-            tsize.1 as i32 / 2 - 5 + NPIECEDATA[hold].1 .1,
-            tsize.0 as i32 / 2 - 26 + NPIECEDATA[hold].1 .0 * 2,
+            tsize.1 as i32 / 2 - 5 + HPIECEDATA[hold].1 .1,
+            tsize.0 as i32 / 2 - 25 + HPIECEDATA[hold].1 .0,
             colours[hold]
         );
         print!(
             "\x1b[{};{}H{}██\x1b[0m",
-            tsize.1 as i32 / 2 - 5 + NPIECEDATA[hold].2 .1,
-            tsize.0 as i32 / 2 - 26 + NPIECEDATA[hold].2 .0 * 2,
+            tsize.1 as i32 / 2 - 5 + HPIECEDATA[hold].2 .1,
+            tsize.0 as i32 / 2 - 25 + HPIECEDATA[hold].2 .0,
             colours[hold]
         );
         print!(
             "\x1b[{};{}H{}██\x1b[0m",
-            tsize.1 as i32 / 2 - 5 + NPIECEDATA[hold].3 .1,
-            tsize.0 as i32 / 2 - 26 + NPIECEDATA[hold].3 .0 * 2,
+            tsize.1 as i32 / 2 - 5 + HPIECEDATA[hold].3 .1,
+            tsize.0 as i32 / 2 - 25 + HPIECEDATA[hold].3 .0,
             colours[hold]
         );
     }
@@ -467,7 +467,7 @@ fn main() {
     let mut cdata = (4, 0, rand::rng().random_range(0..7), 0);
     let mut next = rand::rng().random_range(0..7);
     let mut now = Instant::now();
-    let mut bottomframe = false;
+    let mut bottomframe;
     let mut linecount = 0;
     let mut score = 0;
     let mut hold = 7;
@@ -481,27 +481,28 @@ fn main() {
     render(tsize, &pieces, cdata, next, score, linecount, hold);
 
     loop {
-        if !bottomframe {
-            for px in [
-                PIECEDATA[cdata.2 + cdata.3 * 7].0,
-                PIECEDATA[cdata.2 + cdata.3 * 7].1,
-                PIECEDATA[cdata.2 + cdata.3 * 7].2,
-                PIECEDATA[cdata.2 + cdata.3 * 7].3,
-            ] {
-                if px.1 + cdata.1 >= 17
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 0))
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 1))
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 2))
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 3))
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 4))
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 5))
-                    || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 6))
-                {
-                    bottomframe = true;
-                    break;
-                }
+        let mut tempb = false;
+        for px in [
+            PIECEDATA[cdata.2 + cdata.3 * 7].0,
+            PIECEDATA[cdata.2 + cdata.3 * 7].1,
+            PIECEDATA[cdata.2 + cdata.3 * 7].2,
+            PIECEDATA[cdata.2 + cdata.3 * 7].3,
+        ] {
+            if px.1 + cdata.1 >= 17
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 0))
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 1))
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 2))
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 3))
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 4))
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 5))
+                || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 6))
+            {
+                tempb = true;
+                break;
             }
         }
+        bottomframe = tempb;
+        let _ = tempb;
         if poll(Duration::from_millis(1)).unwrap() {
             let read = read().unwrap();
 
@@ -797,28 +798,29 @@ fn main() {
                     hold,
                 );
 
-                bottomframe = false;
-            } else {
+                // bottomframe = false;
+            } 
+            else {
                 cdata = (cdata.0, cdata.1 + 1, cdata.2, cdata.3);
-                for px in [
-                    PIECEDATA[cdata.2 + cdata.3 * 7].0,
-                    PIECEDATA[cdata.2 + cdata.3 * 7].1,
-                    PIECEDATA[cdata.2 + cdata.3 * 7].2,
-                    PIECEDATA[cdata.2 + cdata.3 * 7].3,
-                ] {
-                    if px.1 + cdata.1 >= 17
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 0))
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 1))
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 2))
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 3))
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 4))
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 5))
-                        || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 6))
-                    {
-                        bottomframe = true;
-                        break;
-                    }
-                }
+                // for px in [
+                //     PIECEDATA[cdata.2 + cdata.3 * 7].0,
+                //     PIECEDATA[cdata.2 + cdata.3 * 7].1,
+                //     PIECEDATA[cdata.2 + cdata.3 * 7].2,
+                //     PIECEDATA[cdata.2 + cdata.3 * 7].3,
+                // ] {
+                //     if px.1 + cdata.1 >= 17
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 0))
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 1))
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 2))
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 3))
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 4))
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 5))
+                //         || pieces.contains(&(px.0 + cdata.0, px.1 + cdata.1 + 1, 6))
+                //     {
+                //         bottomframe = true;
+                //         break;
+                //     }
+                // }
             }
             render(tsize, &pieces, cdata, next, score, linecount, hold);
             now = Instant::now();
